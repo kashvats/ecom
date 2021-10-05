@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{% load crispy_forms_tags %}
+{% block title %} registration page {% endblock %}
+{% block content1 %}
+{% if user.is_authenticated %}
+<h2 class="text-center my-4">you are already logged-in</h2>
+{% else %}{% load static %}
+<div >
+{% if messages %}
+    {% for a in messages %}
+    <div class="container bg-light " style="">
+        <div class="text-center text-info ">
+            <span {% if a.tags %} class="{{a.tags}}" {% endif %}>{{a}}</span></div>
+        {% endfor %}{% endif %}
+    </div>
+<form class="row-6 gy-2 gx-3 align-items-center py-5 my-2 glass " method="POST">{% csrf_token %}
+<div class="mx-auto col-6" style="width: responsive">
+{{pok|crispy}}
+<br><button type="submit" class="btn btn-outline-success row-6" value="submit">Sign-up</button>
+<a href="{% url 'login' %}" class="btn btn-outline-success col-6">log-in</a>
+
+</div>
+
+</form>{% endif %}
+</div>
+
+{% endblock %}

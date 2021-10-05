@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}categories{% endblock %}
+{% block content %}
+<div class="container-fluid  py-5 my-5 col-8">
+    {% for a in cat %}
+    <div class="card mb-3 rounded" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{a.img.url}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><a class="text-secondary text-decoration-none"
+                                              href="{% url 'product_details' a.name %}"><b>{{a.name}}</b></a></h5>
+                    <h6 class="">{{a.cat_name}}</h6><br>
+                    <p class="card-text">{{a.desc|truncatechars:100}}</p><br><br>
+                    <b class="ml-l card-text text-secondary text-decoration-none my-3">Rs. {{a.price}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

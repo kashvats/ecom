@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} product-page {% endblock %}
+{% load crispy_forms_tags %}{% block content1 %}{% if user.is_authenticated %}
+<h2 class="text-center my-4">you are already logged-in</h2>
+{% else %}
+{% if messages %}
+{% for a in messages %}
+<div class="container-fluid bg-light my-3">
+    <div class="text-center text-info ">
+        <span {% if a.tags %} class="{{a.tags}}" {% endif %}>{{a}}</span></div>
+    {% endfor %}{% endif %}
+</div>
+<form class="row gy-2 gx-3 align-items-center py-5 px-3 glass" method="POST">{% csrf_token %}
+    <div class="mx-auto col-6" style="width: responsive">
+        {{pl|crispy}}
+        <br>
+        <button type="submit" class="btn btn-outline-success row-6" value="submit">Log-in</button>
+    </div>
+</form>
+
+{% endif %}
+{% endblock %}

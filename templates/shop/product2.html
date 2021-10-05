@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} product-page {% endblock %}
+{% block content %}
+<div class="container">
+<h1 class="h1 text-center my-4">products</h1>
+<div class="container my-3">
+<div class="row row-cols-sm-4 ">
+  {% for a in prod %}
+  <div class="col-sm-3 col-md-4 py-2">
+    <div class="card h-100">
+      <div class="h-60"><img src="{{a.img.url}}" class="rounded card-img-top " height="200px" alt="..."></div>
+      <div class="card-body">
+        <h4 class="h6 card-title ">{{a.cat_name}}</h4>
+        <h3 class="h3 card-title"><a href="{% url 'product_details' a.namee %}"> {{a.namee}}</a></h3>
+        <p class="h5 card-text text-bottom ">Rs {{a.price}}/-</p>
+      </div>
+    </div>
+  </div>{% endfor %}</div>
+</div></div>
+{% endblock %}

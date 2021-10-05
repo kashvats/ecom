@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %} product-page {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-md-4  rounded"><img src="{{a.img.url}}" class="col-12"></div>
+        <div class="col-sm-5 offset-sm-2 col-md-8 offset-md-0">
+
+            <h5 class="text-muted display-7 my-3 py-4"><strong>{{a.cat_name}}</strong></h5>
+            <h3 class="display-6"><strong>{{a.namee}}</strong></h3><br>
+                    <p class="">{{a.desc|truncatechars:150}}</p>
+                    <p class="py-5">Rs {{a.price}}</p>
+                    <a href="{% url 'cart_add' a.namee %}" class="btn btn-primary">Add to cart</a>
+                    <a href="{% url 'tried' a.namee %}" class="btn btn-primary">Add for Trial</a>
+            </div>
+
+        </div>
+    </div>
+<div class="container">
+<p class="text-center py-2 display-5 py-5"> Description</p>
+<p class="text-center py-2 py-5"> {{a.desc}}</p></div>
+<p class="text-center py-2 display-5 py-5"> Electronic Products</p>
+<div class="container my-3">
+<div class="row row-cols-sm-6  border-danger">
+  {% for a in frod %}
+  <div class="col-sm-3 col-md-3 py-2">
+    <div class="card h-100">
+      <div class="h-60"><img src="{{a.img.url}}" class="rounded card-img-top  " height="200px" alt="..."></div>
+      <div class="card-body">
+        <h4 class="h6 card-title text-muted">{{a.cat_name}}</h4>
+        <h3 class="h3 card-title"><a href="{% url 'product_details' a.namee %}"> {{a.namee}}</a></h3>
+        <p class="h5 card-text text-bottom text-black-50">rs {{a.price}}</p>
+      </div>
+    </div>
+  </div>{% endfor %}</div>
+</div>
+
+{% endblock %}

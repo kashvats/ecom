@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} product-page {% endblock %}
+{% block content %}
+{% load static %}
+<div id="carouselExampleSlidesOnly" class="carousel slide py-2" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="height:500px">
+      <img src="{% static 'imt/clothes1.jpg' %}" style="height:500px" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'imt/clothes4.jpg' %}" style="height:500px" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'imt/clothes3.jpg' %}" style="height:500px" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+<p class="text-center py-2 display-3 py-5">Products</p>
+<div class="container my-3">
+<div class="row">
+  {% for a in prod %}
+  <div class="col-sm-2 col-md-3 py-2">
+    <div class="card h-100">
+      <div class="container-fluids h-60"><img src="{{a.img.url}}" class="card-img-top rounded " height="192px" alt="..."></div>
+      <div class="card-body">
+        <h4 class="h6 card-title">{{a.cat_name}}</h4>
+        <h3 class="h3 card-title"><a href="{% url 'product_details' a.namee %}"> {{a.namee}}</a></h3>
+        <p class="h5 card-text text-bottom">Rs {{a.price}}/-</p>
+      </div>
+    </div>
+  </div>{% endfor %}</div>
+</div>
+
+      <img src="{% static 'imt/del.jpg' %}" style="height:300px" class="d-block w-100 my-4" alt="...">
+<p class="text-center py-2 display-5 py-5"> Electronic Products</p>
+<div class="container my-3">
+<div class="row">
+  {% for a in frod %}
+  <div class="col-sm-3 col-md-3 py-2">
+    <div class="card h-100">
+      <div class="h-60"><img src="{{a.img.url}}" class="card-img-top" height="198px" alt="..."></div>
+      <div class="card-body">
+        <h4 class="h6 card-title">{{a.cat_name}}</h4>
+        <h3 class="h3 card-title"><a href="{% url 'product_details' a.namee %}"> {{a.namee}}</a></h3>
+        <p class="h5 card-text text-bottom">Rs {{a.price}}/-</p>
+      </div>
+    </div>
+  </div>{% endfor %}</div>
+</div>
+
+{% endblock %}
